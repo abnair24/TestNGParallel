@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestNG Test" parallel="tests" thread-count="6">
+    <listeners>
+        <listener class-name="com.abn.testNGTest.common.MethodListener" />
+    </listeners>
+    <test name="Chrome Tests" parallel="methods" >
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="com.abn.testNGTest.FirstTest"/>
+            <class name="com.abn.testNGTest.SignUpTest" />
+        </classes>
+    </test>
+
+    <test name="Firefox tests" parallel="methods">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.abn.testNGTest.FirstTest"/>
+            <class name="com.abn.testNGTest.SignUpTest" />
+        </classes>
+    </test>
+
+</suite>

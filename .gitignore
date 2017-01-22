@@ -1,0 +1,6 @@
+*.iml
+.idea
+target/
+.DS_store
+ErrorScreenshot/
+20170122/
