@@ -23,7 +23,6 @@ public class DriverFactory {
         if (browserName.toLowerCase().contains("chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
             driver = new ChromeDriver();
-
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             int Width = (int) toolkit.getScreenSize().getWidth();
             int Height = (int) toolkit.getScreenSize().getHeight();

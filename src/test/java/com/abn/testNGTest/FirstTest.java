@@ -5,8 +5,6 @@ import com.abn.testNGTest.common.DriverManager;
 import com.abn.testNGTest.pagez.HomePage;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 
 /**
  * Created by aswathyn on 09/01/17.
@@ -24,7 +22,7 @@ public class FirstTest {
     }
 
     @Test()
-    public void contactUsTest() throws Exception {
+    public void bTest() throws Exception {
 
         HomePage pg = new HomePage(DriverManager.getDriver());
 

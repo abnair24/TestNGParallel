@@ -86,8 +86,8 @@ public class HomePage extends BasePage<HomePage> {
         WebElement addToCart = driver.findElement(By.xpath("(.//ul[@id='homefeatured']//a[@title='Add to cart'])[3]"));
 
         //Using JS Executor
-//        scrollToElement(catItem);
-//        mouseOverjQuery(catItem);
+        scrollToElement(catItem);
+        mouseOverjQuery(catItem);
 
         Actions action = new Actions(driver);
         action.moveToElement(catItem).build().perform();

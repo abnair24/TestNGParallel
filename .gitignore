@@ -4,3 +4,5 @@ target/
 .DS_store
 ErrorScreenshot/
 20170122/
+Logs/
+extent.html
