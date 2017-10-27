@@ -40,6 +40,8 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
 
     @Override
     public void onFinish(ISuite suite) {
+        LOGGER.info("Flushing... EXTENT");
+        extent.flush();
 
     }
 
@@ -99,8 +101,9 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
                     + ":with Thread Id: " + Thread.currentThread().getId());
             DriverManager.getDriver().quit();
         }
-        extent.flush();
     }
+
+
 
     @Override
     public void onAfterClass(ITestClass testClass) {
@@ -109,6 +112,7 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
         }
         DriverManager.cleanup();
     }
+
 
     public String captureScreenshot(String screenshotName) throws IOException {
         TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
