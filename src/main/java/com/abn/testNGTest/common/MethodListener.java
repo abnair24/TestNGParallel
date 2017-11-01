@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import com.vimalselvam.testng.listener.ExtentTestNgFormatter;
 import org.apache.commons.io.FileUtils;
 
 import org.openqa.selenium.OutputType;
@@ -30,7 +31,6 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
     protected static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodListener.class);
 
-
     @Override
     public void onStart(ISuite suite) {
         extent = ExtentManager.createInstance("extent.html");
@@ -40,11 +40,9 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
 
     @Override
     public void onFinish(ISuite suite) {
-        LOGGER.info("Flushing... EXTENT");
+        LOGGER.info("Flushing... Extent Report");
         extent.flush();
-
     }
-
 
     @Override
     public void onBeforeClass(ITestClass testClass) {
@@ -81,7 +79,8 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
         if (testResult.getStatus() == ITestResult.FAILURE) {
 
             try {
-                String screenshot = captureScreenshot(CommonHelper.timeStamp(testResult.getName() + "_"));
+                String screenshot = captureScreenshot(CommonHelper.timeStamp(testResult.getName() + "_"),driver);
+
                 test.get().fail(testResult.getThrowable()).addScreenCaptureFromPath(screenshot);
             } catch (IOException ex) {
                 LOGGER.error(ex + "FAILED Capturing Screenshot");
@@ -103,8 +102,6 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
         }
     }
 
-
-
     @Override
     public void onAfterClass(ITestClass testClass) {
         if (DriverManager.getDriver() != null) {
@@ -113,9 +110,9 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
         DriverManager.cleanup();
     }
 
+    public String captureScreenshot(String screenshotName, WebDriver driver) throws IOException {
 
-    public String captureScreenshot(String screenshotName) throws IOException {
-        TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
+        TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
         String dest = "./ErrorScreenshot/" + screenshotName + ".png";
         File destination = new File(dest);
