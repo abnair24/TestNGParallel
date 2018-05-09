@@ -27,8 +27,8 @@ public class MethodListener implements IInvokedMethodListener,IClassListener,ISu
     protected ExtentReports extent;
     protected ExtentTest parent;
 
-    protected static ThreadLocal<ExtentTest> parentTest = new ThreadLocal<ExtentTest>();
-    protected static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
+    protected static InheritableThreadLocal<ExtentTest> parentTest = new InheritableThreadLocal<>();
+    protected static InheritableThreadLocal<ExtentTest> test = new InheritableThreadLocal<ExtentTest>();
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodListener.class);
 
     @Override
