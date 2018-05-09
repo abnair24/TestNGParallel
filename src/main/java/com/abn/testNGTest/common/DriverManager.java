@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class DriverManager {
 
-    private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
+    private static InheritableThreadLocal<WebDriver> webDriver = new InheritableThreadLocal<WebDriver>();
 
     public static WebDriver getDriver() { return webDriver.get(); }
 
