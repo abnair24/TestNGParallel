@@ -87,7 +87,7 @@ public class HomePage extends BasePage<HomePage> {
 
         //Using JS Executor
         scrollToElement(catItem);
-        mouseOverjQuery(catItem);
+//        mouseOverjQuery(catItem);
 
         Actions action = new Actions(driver);
         action.moveToElement(catItem).build().perform();

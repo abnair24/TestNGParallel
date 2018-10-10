@@ -43,24 +43,25 @@ public abstract class BasePage  <P extends BasePage> {
 
     protected void waitforAjax(){
         waitTime = new WebDriverWait(driver,130);
-        waitTime.until(new ExpectedCondition<Boolean>()
-        {
+        waitTime.until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 return (Boolean)js.executeScript("return jQuery.active == 0");
-            }});
+        }});
+
     }
 
     protected void waitForPageToLoad(ExpectedCondition<?> expectedCondition) {
 
         Wait wait = new FluentWait(driver)
-                .withTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS)
-                .pollingEvery(POLLING_RATE, TimeUnit.SECONDS);
+                .withTimeout(java.time.Duration.ofSeconds(PAGE_LOAD_TIMEOUT))
+                .pollingEvery(java.time.Duration.ofSeconds(POLLING_RATE));
         wait.until(getPageLoadCondition());
     }
 
     protected void waitForElement(ExpectedCondition expectedCondition) {
         waitTime = new WebDriverWait(driver,30);
+
         waitTime.until(expectedCondition);
 
     }

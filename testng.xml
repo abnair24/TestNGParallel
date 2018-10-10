@@ -3,21 +3,20 @@
     <listeners>
         <listener class-name="com.abn.testNGTest.common.MethodListener" />
     </listeners>
-    <test name="Chrome Tests" parallel="classes" >
-        <parameter name="browser" value="chrome"></parameter>
+    <!--<test name="Chrome Tests" parallel="classes" >-->
+        <!--<parameter name="browser" value="chrome"></parameter>-->
+        <!--<classes>-->
+            <!--<class name="com.abn.testNGTest.FirstTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+    <test name="Firefox tests" parallel="classes">
+        <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="com.abn.testNGTest.FirstTest"/>
             <class name="com.abn.testNGTest.SignUpTest"/>
         </classes>
     </test>
-
-    <!--<test name="Firefox tests" parallel="classes">-->
-        <!--<parameter name="browser" value="firefox"></parameter>-->
-        <!--<classes>-->
-            <!--<class name="com.abn.testNGTest.FirstTest"/>-->
-            <!--<class name="com.abn.testNGTest.SignUpTest"/>-->
-        <!--</classes>-->
-    <!--</test>-->
 
 
 
